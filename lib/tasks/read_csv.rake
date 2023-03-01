@@ -17,11 +17,12 @@ namespace :read_csv do
         current_stage = Stage.create(value: row['stage'])
       end
 
-      Prospect.create(first_name: row['first_name'],
-        first_name: row['first_name'], 
+      Prospect.create(
+        first_name: row['first_name'],
+        last_name: row['last_name'], 
         email: row['email'], 
         phone: row['phone'], 
-        phone: row['phone'], 
+        probability: row['probability'], 
         stage: current_stage,
         company: current_company
       )
