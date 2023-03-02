@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   delete 'prospects/:id', to: 'prospects#destroy'
   get 'prospect/new', to: 'prospects#new'
   
-  get 'company/:id', to: 'companies#index'
+  get 'companies/:id', to: 'companies#index'
   get 'company/edit/:id', to: 'companies#edit'
   post 'company/edit/:id', to: 'companies#update'
+  post 'company/create', to: 'companies#create'
   delete 'company/:id', to: 'companies#destroy'
+  get 'company/new', to: 'companies#new'
 
   root to: 'prospects#index' 
 end

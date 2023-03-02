@@ -32,7 +32,9 @@
                 <%= prospect.phone %>
               </td>
               <td class="p-5 border-b border-gray-200 bg-white text-sm">
-                <%= prospect.company.name %>
+                <%= link_to("/companies/#{prospect.company.id}") do %>
+                  <h2 class="underline cursor-pointer"><%= prospect.company.name %></h2>
+                <% end %>
               </td>
               <td class="p-5 border-b border-gray-200 bg-white text-sm">
                 <%= prospect.probability %>

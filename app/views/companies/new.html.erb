@@ -1,0 +1,13 @@
+<div class="relative mx-auto align-center">
+  <h1 class="text-[40px] font-bold">Create new company</h1>
+
+  <%= form_with(url: "/company/create" , model: @company, method: :post, class: "flex flex-col gap-6 py-10") do |f| %>
+    <div class="flex flex-col md:flex-row gap-6 md:gap-2 justify-between">
+      <%= f.text_field :name, required: true, placeholder: "Name*", class: "bg-white rounded border-1 placeholder:font-light focus:ring-[#7D4FE0]" %>
+    <div class="flex flex-col md:flex-row gap-6 md:gap-2">
+      <div class="mt-2">
+        <%= f.submit "Update", class: "bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded cursor-pointer" %>
+      </div>
+    </div>
+  <% end %>
+</div>

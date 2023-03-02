@@ -18,9 +18,15 @@ class CompaniesController < ApplicationController
   def create
     if Company.create(company_params)
       flash[:success] = "Company created"
+      redirect_to request.referrer
     else
       flash.now[:error] = "Could not create."
+      redirect_to request.referrer
     end
+  end
+
+  def new
+    @company = Company.all
   end
 
   def update
