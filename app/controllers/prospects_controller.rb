@@ -2,7 +2,7 @@ class ProspectsController < ApplicationController
   PROSPECTS_PER_PAGE = 20
   
   def index
-    @table_fields = ["First Name", "Last Name", "Email", "Stage", "Phone", "Company", "Probability"]
+    @table_fields = ["First Name", "Last Name", "Email", "Stage", "Phone", "Company", "Probability", "Edit", "Delete"]
 
     @current_page = params[:page].to_i
     @current_page = 1 if @current_page < 1

@@ -37,6 +37,16 @@
               <td class="p-5 border-b border-gray-200 bg-white text-sm">
                 <%= prospect.probability %>
               </td>
+              <td class="p-5 border-b border-gray-200 bg-white text-sm">
+                <%= link_to("/prospects/1") do %>
+                  <i class="fa-solid fa-pen hover:cursor-pointer hover:text-blue-700"></i>
+                <% end %>
+              </td>
+              <td class="p-5 border-b border-gray-200 bg-white text-sm">
+                <%= link_to("/prospects/1") do %>
+                  <i class="fa-solid fa-trash hover:cursor-pointer hover:text-red-700"></i>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
@@ -44,28 +54,27 @@
     </div>
   </div>
 
-<div class="w-full m-auto flex justify-center align-center">
-  <div class="flex items-center flex-grow mb-10">
-    <% if @current_page > 1 %>
-      <%= link_to 'Before', "/prospects/#{@current_page - 1}", class: "inline-block rounded py-2 px-3 bg-gray-200 hover:bg-gray-300 focus:bg-gray-300 text-gray-700 font-semibold mr-2" %>
-    <% end %>
+  <div class="w-full m-auto flex justify-center align-center">
+    <div class="flex items-center flex-grow mb-10">
+      <% if @current_page > 1 %>
+        <%= link_to 'Before', "/prospects/#{@current_page - 1}", class: "inline-block rounded py-2 px-3 bg-gray-200 hover:bg-gray-300 focus:bg-gray-300 text-gray-700 font-semibold mr-2" %>
+      <% end %>
 
-    <div class="gap-1 mx-4">
-      <% (@current_page - 3).upto(@current_page + 3) do |page| %>
-        <% if page >= 1 && page <= @total_pages %>
-          <% if page == @current_page %>
-            <%= content_tag :span, page, class: "text-[#0000FF]" %>
-          <% else %>
-            <%= link_to page, "/prospects/#{page}", class: "" %>
+      <div class="gap-1 mx-4">
+        <% (@current_page - 3).upto(@current_page + 3) do |page| %>
+          <% if page >= 1 && page <= @total_pages %>
+            <% if page == @current_page %>
+              <%= content_tag :span, page, class: "text-[#0000FF]" %>
+            <% else %>
+              <%= link_to page, "/prospects/#{page}", class: "" %>
+            <% end %>
           <% end %>
         <% end %>
+      </div>
+
+      <% if @current_page < @total_pages %>
+        <%= link_to 'Next', "/prospects/#{@current_page + 1}", class: "inline-block rounded py-2 px-3 bg-gray-200 hover:bg-gray-300 focus:bg-gray-300 text-gray-700 font-semibold mr-2" %>
       <% end %>
     </div>
-
-    <% if @current_page < @total_pages %>
-      <%= link_to 'Next', "/prospects/#{@current_page + 1}", class: "inline-block rounded py-2 px-3 bg-gray-200 hover:bg-gray-300 focus:bg-gray-300 text-gray-700 font-semibold mr-2" %>
-    <% end %>
   </div>
-
-</div>
 </div>
