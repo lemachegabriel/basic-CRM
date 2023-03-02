@@ -15,6 +15,8 @@ class ProspectsController < ApplicationController
 
   def edit
     @prospect = Prospect.find_by(id: params[:id])
+    @stages = Stage.all
+    @companies = Company.order('name ASC')
 
   end
 
