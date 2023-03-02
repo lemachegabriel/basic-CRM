@@ -12,4 +12,25 @@ class ProspectsController < ApplicationController
 
     @prospects = Prospect.limit(PROSPECTS_PER_PAGE).offset((@current_page - 1) * PROSPECTS_PER_PAGE)
   end
+
+  def edit
+    @prospect = Prospect.find_by(id: params[:id])
+
+  end
+
+  def update
+    @prospect = Prospect.find(params[:id])
+    if @prospect.update(prospect_params)
+      flash[:success] = "Client updated successfully."
+    else
+      flash.now[:error] = "Could not update."
+    end
+  end
+
+  private
+
+  def prospect_params
+    params.require(:prospect).permit(:first_name, :last_name, :email, :phone, :probability, :company_id, :stage_id)
+  end
+ 
 end
