@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'prospects/:page', to: 'prospects#index'
   get 'prospects/edit/:id', to: 'prospects#edit'
   post 'prospects/edit/:id', to: 'prospects#update'
+  delete 'prospects/:id', to: 'prospects#destroy'
 end

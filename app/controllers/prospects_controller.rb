@@ -24,8 +24,21 @@ class ProspectsController < ApplicationController
     @prospect = Prospect.find(params[:id])
     if @prospect.update(prospect_params)
       flash[:success] = "Client updated successfully."
+      redirect_to request.referrer
     else
       flash.now[:error] = "Could not update."
+      redirect_to request.referrer
+    end
+  end
+
+  def destroy
+    prospect = Prospect.find(params[:id])
+    if prospect.destroy
+      flash[:success] = "Client detroyed"
+      redirect_to request.referrer
+    else
+      flash.now[:error] = "Could not destroy."
+      redirect_to request.referrer
     end
   end
 
