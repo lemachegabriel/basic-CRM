@@ -1,0 +1,48 @@
+<h1>Clients</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Stage</th>
+      <th>Phone</th>
+      <th>Company</th>
+      <th>Probability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @prospects.each do |prospect| %>
+      <tr>
+        <td><%= prospect.first_name %></td>
+        <td><%= prospect.last_name %></td>
+        <td><%= prospect.email %></td>
+        <td><%= prospect.stage.value %></td>
+        <td><%= prospect.phone %></td>
+        <td><%= prospect.company.name %></td>
+        <td><%= prospect.probability %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="pagination">
+  <% if @current_page > 1 %>
+    <%= link_to 'Before', "/prospects/#{@current_page - 1}" %>
+  <% end %>
+
+  <% (@current_page - 3).upto(@current_page + 3) do |page| %>
+    <% if page >= 1 && page <= @total_pages %>
+      <% if page == @current_page %>
+        <%= content_tag :span, page, class: 'current' %>
+      <% else %>
+        <%= link_to page, "/prospects/#{page}" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if @current_page < @total_pages %>
+    <%= link_to 'Next', "/prospects/#{@current_page + 1}" %>
+  <% end %>
+</div>
