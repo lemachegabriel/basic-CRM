@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   get 'prospects/edit/:id', to: 'prospects#edit'
   post 'prospects/edit/:id', to: 'prospects#update'
   delete 'prospects/:id', to: 'prospects#destroy'
+  
+  get 'company/:id', to: 'prospects#index'
+  get 'company/edit/:id', to: 'prospects#edit'
+  post 'company/edit/:id', to: 'prospects#update'
+  delete 'company/:id', to: 'prospects#destroy'
 end
