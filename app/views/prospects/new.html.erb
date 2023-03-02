@@ -1,0 +1,25 @@
+<div class="relative mx-auto align-center">
+  <h1 class="text-[30px] font-bold pb-10">Create new client</h1>
+  <%= form_with(url: "/prospects/create" , model: @prospect, method: :post, class: "flex flex-col gap-6") do |f| %>
+    <div class="flex flex-col md:flex-row gap-6 md:gap-2 justify-between">
+      <%= f.text_field :first_name, required: true, placeholder: "First name*", class: "bg-white rounded border-1 placeholder:font-light focus:ring-[#7D4FE0]" %>
+      <%= f.text_field :last_name, required: true, placeholder: "Last Name*", class: "bg-white rounded border-1 placeholder:font-light focus:ring-[#7D4FE0]" %>
+    </div>
+      <%= f.text_field :email, required: true, placeholder: "Email Address*", class: "bg-white rounded border-1 placeholder:font-light focus:ring-[#7D4FE0]" %>
+      <%= f.telephone_field :phone, placeholder: "Phone", class: "bg-white rounded border-1 placeholder:font-light focus:ring-[#7D4FE0]" %>
+      <%= f.select :company_id, options_for_select(@companies.pluck(:name, :id)), {}, class: "bg-white rounded border-1 placeholder:font-light focus:ring-[#7D4FE0] w-full" %>
+    <div class="flex flex-col md:flex-row gap-6 md:gap-2 justify-between">
+      <%= f.select :stage_id, options_for_select(@stages.pluck(:value, :id)), {}, class: "bg-white rounded border-1 placeholder:font-light focus:ring-[#7D4FE0] w-full" %>
+      <%= f.text_field :probability, placeholder: "Probability", class: "bg-white rounded border-1 placeholder:font-light focus:ring-[#7D4FE0]" %>
+    </div>
+    <div class="flex flex-col md:flex-row gap-6 md:gap-2">
+      <div class="mt-2">
+        <%= f.submit "Create", class: "bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded cursor-pointer" %>
+      </div>
+      <div class="mt-4">
+        <%= link_to "Cancel", request.referrer, class: "bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded cursor-pointer" %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
