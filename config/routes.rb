@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  
+  devise_for :users, path: 'users', controllers: {
+    sessions: 'users/sessions',
+    confirmations: 'users/confirmations',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+    unlocks: 'users/unlocks'
+  }
 
   get 'prospects', to: 'prospects#index'
   get 'prospects/:page', to: 'prospects#index'
