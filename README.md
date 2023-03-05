@@ -1,24 +1,15 @@
-# README
+# How to run
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+first of all clone the project with: ```git clone git@github.com:lemachegabriel/basic-CRM.git```
 
-Things you may want to cover:
+then follow the next steps: 
 
-* Ruby version
+* create the db: ```rails db:create```
 
-* System dependencies
+* run the migrations: ```rails db:migrate```
 
-* Configuration
+* load data from csv file into database: ```rails read_csv:load_data```
 
-* Database creation
+* create a test user on the rails console: ```rails c``` next ```User.create(email: [your_email], password: [your_password])```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* run the project ```bin/dev```
